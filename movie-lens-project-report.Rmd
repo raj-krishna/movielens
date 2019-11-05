@@ -210,11 +210,17 @@ Let's first see how many distinct users and movies are there in the dataset.
   
 edx %>% 
   summarise(Movies = n_distinct(movieId),
-            Users = n_distinct(userId)) %>% knitr::kable()
-
+            Users = n_distinct(userId)) %>% 
+  knitr::kable("latex", caption = "Distinct Movies and Users", 
+               escape = FALSE, linesep = "") %>%
+  kable_styling(latex_options = c("striped", "hold_position"), 
+                full_width = F , position = "center") %>%
+  row_spec(0, bold = TRUE, color = "white" , background ="red") %>%
+  footnote(general = "edx dataset", 
+           general_title = "source data:", footnote_as_chunk = TRUE)
 ```
 
-So, there are **10,677** movies and **69,878** users in the edx dataset. If each user had rated each of the movies, we should have a **746,087,406** records in out dataset where as we only have **9,000,055**. We can infer from this, that not all users have rated all the movies in the dataset.  
+So, there are **10,677** movies and **69,878** users in the edx dataset. If each user had rated each of the movies, we should have **746,087,406** records in out dataset where as we only have **9,000,055**. From this we can infer that not all users have rated all the movies in the dataset.  
 
 ### Average ratings by User  
 
@@ -316,7 +322,7 @@ genre_edx %>%
                 full_width = F , position = "center") %>%
   row_spec(0, bold = TRUE, color = "white" , background ="red") %>%
   footnote(general = "genre edx dataset", 
-           general_title = "Source Data:", footnote_as_chunk = TRUE)
+           general_title = "source data:", footnote_as_chunk = TRUE)
   
 ```
 
