@@ -206,7 +206,7 @@ Before we dive deep into the project, let's explore the data that we have a bit.
 
 ### Number of distinct users and movies
 Let's first see how many distinct users and movies are there in the dataset. 
-```{r number-of-users-movies}
+```{r number-of-users-movies, cache = TRUE, include = TRUE}
 edx %>%
   group_by(userId) %>%
   summarise(n_distinct(userId)) %>% count() %>% kable()
@@ -555,7 +555,7 @@ When we account for the movie effect we immediately see an improvement of $`r im
 
 ### Modeling movie + user effect
 
-```{r movie-user-effect-model, include = TRUE}
+```{r movie-user-effect-model, cache = TRUE, include = TRUE}
 
 # Movie and user effect model: Modeling movie effect and user effect (b_i + b_u)
 
