@@ -207,15 +207,14 @@ Before we dive deep into the project, let's explore the data that we have a bit.
 ### Number of distinct users and movies
 Let's first see how many distinct users and movies are there in the dataset. 
 ```{r number-of-users-movies, cache = TRUE, include = TRUE}
-edx %>%
-  group_by(userId) %>%
-  summarise(n_distinct(userId)) %>% count() %>% kable()
   
 edx %>% 
-  group_by(movieId) %>%
-  summarise(n_distinct(movieId)) %>% count() %>% kable()
+  summarise(Movies = n_distinct(movieId),
+            Users = n_distinct(userId)) %>% knitr::kable()
 
 ```
+
+So, there are **10,677** movies and **69,878** users in the edx dataset. If each user had rated each of the movies, we should have a **746,087,406** records in out dataset where as we only have **9,000,055**. We can infer from this, that not all users have rated all the movies in the dataset.  
 
 ### Average ratings by User  
 
